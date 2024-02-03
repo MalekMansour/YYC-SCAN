@@ -2,7 +2,7 @@
 
 YYC Scan is an innovative application designed to make your experience in Calgary more engaging and rewarding.
 
-## Gamification Feature
+## Gamification 
 
 The app gamifies your exploration of Calgary by awarding points for visiting different places such as restaurants, cafes, and various activities. The more places you visit, the more points you accumulate. As you reach specific point milestones, you level up in the app.
 
