@@ -7,44 +7,38 @@ const TextStyle title = TextStyle(
 );
   
 const TextStyle subTitle = TextStyle(
-  fontSize: 23,
+  fontSize: 20,
   letterSpacing: 0.5,
-  height: 16,
   fontWeight: FontWeight.w400
 );
 
 const TextStyle textInfo = TextStyle(
   fontSize: 18, 
   letterSpacing: 0.1,
-  height: 13,
   fontWeight: FontWeight.w600
 );
 
 const TextStyle textContent = TextStyle(
   fontSize: 10, 
   letterSpacing: 0.1,
-  height: 13,
   fontWeight: FontWeight.w300
 );
 
 const TextStyle menuText = TextStyle(
   fontSize: 20, 
   letterSpacing: 0.5,
-  height: 16,
   fontWeight: FontWeight.w400,
 );
 
 const TextStyle buttonText = TextStyle(
   fontSize: 14, 
   letterSpacing: 0.1,
-  height: 20,
   fontWeight: FontWeight.w600,
 );
 
 const TextStyle appBarText = TextStyle(
-  fontSize: 12, 
+  fontSize: 12,
   letterSpacing: 0.5,
-  height: 16,
   fontWeight: FontWeight.w500,
 );
 
