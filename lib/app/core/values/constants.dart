@@ -1,3 +1,3 @@
 class Constants {
-  bool isDarkMode = false;
+  bool isDarkMode = true;
 }
