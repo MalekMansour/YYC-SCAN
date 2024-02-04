@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:yyc_scan/app/global_widgets/texts/title.widget.dart';
 import 'package:yyc_scan/app/modules/home/controllers/home_controller.dart';
-import 'package:yyc_scan/app/modules/home/views/activity_tiles.dart';
+import 'package:yyc_scan/app/modules/activities/views/activity_tiles.dart';
 
 class TopPlacesWidget extends GetView<HomeController> {
   const TopPlacesWidget({super.key});

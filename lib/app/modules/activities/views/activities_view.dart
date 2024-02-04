@@ -6,7 +6,7 @@ import 'package:yyc_scan/app/core/theme/app_color.dart';
 import 'package:yyc_scan/app/global_widgets/fields/search_bar.widget.dart';
 import 'package:yyc_scan/app/global_widgets/scaffold/scaffold.widget.dart';
 import 'package:yyc_scan/app/modules/activities/widgets/maps.widget.dart';
-import 'package:yyc_scan/app/modules/home/views/activity_tiles.dart';
+import 'package:yyc_scan/app/modules/activities/views/activity_tiles.dart';
 
 import '../controllers/activities_controller.dart';
 
