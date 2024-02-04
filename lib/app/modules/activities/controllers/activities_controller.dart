@@ -90,7 +90,7 @@ class ActivitiesController extends GetxController {
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(10),
                                   gradient: AppColors().linearGradient),
-                              child: Text('See more...'),
+                              child: Text('See more...'.tr),
                             )
                           ],
                         )

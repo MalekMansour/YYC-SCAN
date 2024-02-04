@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:yyc_scan/app/core/theme/text_theme.dart';
 
 class WelcomeMessageWidget extends StatelessWidget {
@@ -21,7 +22,7 @@ class WelcomeMessageWidget extends StatelessWidget {
           ),
           Flexible(
             child: Text(
-              'Hello, $name!',
+              '${'Hello'.tr}, $name!',
               style: title,
             ),
           )

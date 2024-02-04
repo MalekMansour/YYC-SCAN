@@ -11,6 +11,8 @@ abstract class Routes {
   static const SIGN_IN = _Paths.SIGN_IN;
   static const COUPONS = _Paths.COUPONS;
   static const SPLASHSCREEN = _Paths.SPLASHSCREEN;
+  static const SETTINGS = _Paths.SETTINGS;
+  static const LANGUAGE = _Paths.LANGUAGE;
 }
 
 abstract class _Paths {
@@ -23,4 +25,6 @@ abstract class _Paths {
   static const SIGN_IN = '/sign-in';
   static const COUPONS = '/coupons';
   static const SPLASHSCREEN = '/splashscreen';
+  static const SETTINGS = '/settings';
+  static const LANGUAGE = '/language';
 }
