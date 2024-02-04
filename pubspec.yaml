@@ -9,6 +9,8 @@ dependencies:
   cupertino_icons: ^1.0.2
   get: 4.6.6
   persistent_bottom_nav_bar: ^5.0.2
+  mobile_scanner: ^4.0.0
+  google_maps_flutter: ^2.5.3
   flutter:
     sdk: flutter
 
