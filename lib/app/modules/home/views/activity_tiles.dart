@@ -99,7 +99,7 @@ class ActivityCard extends GetView<HomeController> {
                   ),
                 );
               }
-                    ),
+              ),
             ),
           ),
         ),
