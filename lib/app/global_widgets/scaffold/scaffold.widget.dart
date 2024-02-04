@@ -6,22 +6,23 @@ import 'package:yyc_scan/app/core/values/strings.dart';
 import 'package:yyc_scan/app/global_widgets/images/logo.widget.dart';
 import 'package:yyc_scan/app/global_widgets/scaffold/controller/scaffold.controller.dart';
 import 'package:yyc_scan/app/global_widgets/scaffold/drawer.widget.dart';
+import 'package:yyc_scan/app/routes/app_pages.dart';
 
 class ScaffoldWidget extends GetView<ScaffoldController> {
   final Widget child;
+  final bool showBackgroundAsset;
   final EdgeInsets? backgroundElementPadding;
-  final GlobalKey scaffoldKey;
+  final GlobalKey<ScaffoldState> scaffoldKey;
   const ScaffoldWidget(
       {super.key,
       required this.child,
+      this.showBackgroundAsset = true,
       this.backgroundElementPadding,
       required this.scaffoldKey});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        key: scaffoldKey,
-        endDrawer: DrawerWidget(),
         backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         body: body());
   }
@@ -29,25 +30,31 @@ class ScaffoldWidget extends GetView<ScaffoldController> {
   Widget body() {
     return Stack(
       children: [
-        Padding(
-          padding:
-              backgroundElementPadding ?? const EdgeInsets.only(bottom: 150),
-          child: Center(
-              child: Image.asset(Constants().isDarkMode
-                  ? AppStrings().backgroundElementDarkImageUrl
-                  : AppStrings().backgroundElementLightImageUrl)),
-        ),
+        if (showBackgroundAsset)
+          Padding(
+            padding:
+                backgroundElementPadding ?? const EdgeInsets.only(bottom: 150),
+            child: Center(
+                child: Image.asset(Constants().isDarkMode
+                    ? AppStrings().backgroundElementDarkImageUrl
+                    : AppStrings().backgroundElementLightImageUrl)),
+          ),
         SafeArea(
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20),
+            padding: const EdgeInsets.symmetric(
+              horizontal: 20,
+            ),
             child: Column(children: [
+              const SizedBox(
+                height: 20,
+              ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   const LogoWidget(),
                   IconButton(
                       onPressed: () {
-                        controller.scaffoldKey.currentState!.openEndDrawer();
+                        Get.toNamed(Routes.SETTINGS);
                       },
                       icon: const Icon(Icons.menu))
                 ],

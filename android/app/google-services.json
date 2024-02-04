@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "961750529501",
+    "project_id": "test-9fe53",
+    "storage_bucket": "test-9fe53.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:961750529501:android:43fa7b0d480a6a7502f234",
+        "android_client_info": {
+          "package_name": "com.advilbuddies.yyc_scan"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "961750529501-745thbuq1ovne13bh5r2h6fi3apamfn4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAKWjlldB0i36kQKH7fcpYITzkheOQFVh8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "961750529501-745thbuq1ovne13bh5r2h6fi3apamfn4.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "961750529501-frn4inhr5ddr4vf2m30brfu05tgfmu3r.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.advilbuddies.yycscan"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

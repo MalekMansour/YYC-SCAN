@@ -1,5 +1,5 @@
 name: yyc_scan
-version: 1.0.0+1
+version: 1.0.0+3
 publish_to: none
 description: A new Flutter project.
 environment:
@@ -12,6 +12,19 @@ dependencies:
   mobile_scanner: ^4.0.0
   google_maps_flutter: ^2.5.3
   slide_indexed_stack: ^0.0.1
+  custom_info_window: ^1.0.1
+  shared_preferences: ^2.2.2
+  video_player: ^2.8.2
+  flutter_easyloading: ^3.0.5
+  http:
+  firebase_core: ^2.25.3
+  firebase_auth: ^4.17.3
+  flutter_form_builder: ^9.2.1
+  form_builder_validators: ^9.1.0
+  intl:
+  openapi:
+    path: api/yyc_scan-api
+  google_sign_in: ^6.2.1
   flutter:
     sdk: flutter
   camera: ^0.10.5+9

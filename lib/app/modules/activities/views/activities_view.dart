@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:slide_indexed_stack/slide_indexed_stack.dart';
 import 'package:yyc_scan/app/core/theme/app_color.dart';
+import 'package:yyc_scan/app/global_widgets/fields/search_bar.widget.dart';
 import 'package:yyc_scan/app/global_widgets/scaffold/scaffold.widget.dart';
 import 'package:yyc_scan/app/modules/activities/widgets/maps.widget.dart';
 import 'package:yyc_scan/app/modules/home/views/activity_tiles.dart';
@@ -19,16 +20,7 @@ class ActivitiesView extends GetView<ActivitiesController> {
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 20),
           child: Column(children: [
-            TextFormField(
-              decoration: InputDecoration(
-                  filled: true,
-                  hintText: 'Search...',
-                  suffixIcon: const Icon(Icons.search),
-                  fillColor: Theme.of(context).colorScheme.surface,
-                  border: OutlineInputBorder(
-                      borderSide: BorderSide.none,
-                      borderRadius: BorderRadius.circular(30))),
-            ),
+            SearchBarWidget(),
             const SizedBox(
               height: 20,
             ),
@@ -80,7 +72,7 @@ class ActivitiesView extends GetView<ActivitiesController> {
                                               ),
                                             ],
                                           ),
-                                        const Text('Map view')
+                                        Text('Map view'.tr)
                                       ],
                                     )),
                               ),
@@ -121,7 +113,7 @@ class ActivitiesView extends GetView<ActivitiesController> {
                                               ),
                                             ],
                                           ),
-                                        const Text('List view')
+                                        Text('List view'.tr)
                                       ],
                                     )),
                               )
@@ -138,7 +130,7 @@ class ActivitiesView extends GetView<ActivitiesController> {
                                 decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(30),
                                     gradient: AppColors().linearGradient),
-                                child: const Center(child: Text('Filters'))),
+                                child: Center(child: Text('Filters'.tr))),
                           )
                         ],
                       ),

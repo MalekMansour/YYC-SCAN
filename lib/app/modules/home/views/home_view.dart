@@ -17,7 +17,7 @@ class HomeView extends GetView<HomeController> {
       backgroundElementPadding: EdgeInsets.only(top: 400),
       child: Column(children: [
         WelcomeMessageWidget(
-          name: 'Marybeth',
+          name: 'Gary',
         ),
         YourStatisticsWidget(),
         FilledButton(onPressed:(){controller.getActivities();

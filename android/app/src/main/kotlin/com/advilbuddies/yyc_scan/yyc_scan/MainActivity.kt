@@ -1,4 +1,4 @@
-package com.advilbuddies.yyc_scan.yyc_scan
+package com.advilbuddies.yyc_scan
 
 import io.flutter.embedding.android.FlutterActivity
 
