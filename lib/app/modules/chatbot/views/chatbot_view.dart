@@ -52,8 +52,9 @@ class _MyAppState extends State<ChatBot> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-          body: Column(children: <Widget>[
-        Padding(
+          body: Container(
+        height: MediaQuery.of(context).size.height,
+        child: Padding(
           padding: EdgeInsets.all(20),
           child: Stack(
             children: [
@@ -79,7 +80,7 @@ class _MyAppState extends State<ChatBot> {
                 },
                 shouldOverrideUrlLoading: (controller, navigationAction) async {
                   var uri = navigationAction.request.url!;
-              
+
                   if (![
                     "http",
                     "https",
@@ -98,7 +99,7 @@ class _MyAppState extends State<ChatBot> {
                       return NavigationActionPolicy.CANCEL;
                     }
                   }
-              
+
                   return NavigationActionPolicy.ALLOW;
                 },
                 onLoadStop: (controller, url) async {
@@ -138,8 +139,7 @@ class _MyAppState extends State<ChatBot> {
             ],
           ),
         ),
-       
-      ])),
+      )),
     );
   }
 }
