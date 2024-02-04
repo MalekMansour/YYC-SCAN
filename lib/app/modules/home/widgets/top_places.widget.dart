@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:yyc_scan/app/global_widgets/texts/title.widget.dart';
+import 'package:yyc_scan/app/modules/home/widgets/activity_tiles.dart';
 
 class TopPlacesWidget extends StatelessWidget {
   const TopPlacesWidget({super.key});
@@ -17,6 +18,7 @@ class TopPlacesWidget extends StatelessWidget {
               Text('See More...')
             ],
           ),
+          ActivityCard()
         ],
       ),
     );
