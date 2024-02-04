@@ -15,7 +15,11 @@ class CouponsWidget extends GetView<ProfileController> {
       appBar: AppBar(
         leading: InkWell(
             onTap: () {
-              controller.index.value = 0;
+              if (Get.currentRoute != Routes.NAVIGATION) {
+                Get.back();
+              } else {
+                controller.index.value = 0;
+              }
             },
             child: Icon(Icons.arrow_back)),
         title: Text('Your coupons'.tr),

@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -37,6 +38,7 @@ class AuthService extends GetxService {
         await usersApi.usersLoginGet(idToken: idToken);
     if (res?.userId != null) {
       setUserId(res!.userId!);
+      EasyLoading.showSuccess('Successfully logged in'.tr);
       Get.toNamed(Routes.NAVIGATION);
     } else {
       EasyLoading.showError('Login Error. Please try again');
@@ -52,21 +54,36 @@ class AuthService extends GetxService {
 
   Future<void> signInWithGoogle() async {
     try {
-      final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+      if (kIsWeb) {
+        GoogleAuthProvider googleProvider = GoogleAuthProvider();
 
-      final GoogleSignInAuthentication? googleAuth =
-          await googleUser?.authentication;
+        googleProvider.setCustomParameters({'login_hint': 'user@example.com'});
 
-      final credential = GoogleAuthProvider.credential(
-        accessToken: googleAuth?.accessToken,
-        idToken: googleAuth?.idToken,
-      );
+        // Once signed in, return the UserCredential
+        UserCredential? userCredential =
+            await FirebaseAuth.instance.signInWithPopup(googleProvider);
+        if (userCredential != null) await loginToAPI(userCredential);
+      } else {
+        final GoogleSignInAccount? googleUser = await GoogleSignIn(
+                clientId:
+                    '961750529501-frn4inhr5ddr4vf2m30brfu05tgfmu3r.apps.googleusercontent.com')
+            .signInSilently();
 
-      UserCredential? userCredential =
-          await FirebaseAuth.instance.signInWithCredential(credential);
-      await loginToAPI(userCredential);
-    } on Exception catch (e) {
+        final GoogleSignInAuthentication? googleAuth =
+            await googleUser?.authentication;
+
+        final credential = GoogleAuthProvider.credential(
+          accessToken: googleAuth?.accessToken,
+          idToken: googleAuth?.idToken,
+        );
+
+        UserCredential? userCredential =
+            await FirebaseAuth.instance.signInWithCredential(credential);
+        if (userCredential != null) await loginToAPI(userCredential);
+      }
+    } catch (e) {
       // TODO
+      EasyLoading.dismiss();
       print('exception->$e');
     }
   }
@@ -93,7 +110,6 @@ class AuthService extends GetxService {
   // }
   @override
   void onInit() {
-    Firebase.initializeApp();
     super.onInit();
   }
 }
