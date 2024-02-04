@@ -5,6 +5,12 @@ class HomeController extends GetxController {
   //TODO: Implement HomeController
   PersistentTabController? controller;
 
+  RxList activity = RxList(["HIII"]);
+
+  getActivities(){
+  activity.add('Hello');
+  }
+
   final count = 0.obs;
   @override
   void onInit() {
