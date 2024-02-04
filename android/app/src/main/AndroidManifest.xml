@@ -4,6 +4,8 @@
         android:label="yyc_scan"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
+        <meta-data android:name="com.google.android.geo.API_KEY"
+               android:value="AIzaSyCm1hoQoTmqCtZsE91AdjfOx7SS9E5gmWI"/>
         <activity
             android:name=".MainActivity"
             android:exported="true"
