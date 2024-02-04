@@ -1,6 +1,8 @@
 import 'package:get/get.dart';
 
 import '../global_widgets/navigation/navigation.widget.dart';
+import '../modules/activities/bindings/activities_binding.dart';
+import '../modules/activities/views/activities_view.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
 import '../modules/scan/bindings/scan_binding.dart';
@@ -27,6 +29,11 @@ class AppPages {
       name: _Paths.SCAN,
       page: () => const ScanView(),
       binding: ScanBinding(),
+    ),
+    GetPage(
+      name: _Paths.ACTIVITIES,
+      page: () => const ActivitiesView(),
+      binding: ActivitiesBinding(),
     ),
   ];
 }
