@@ -1,0 +1,245 @@
+---
+openapi: 3.0.1
+info:
+  title: Hackathon_Backend
+  version: "1.0"
+servers:
+  - url: https://yycscan-backend.azurewebsites.net
+paths:
+  "/Achievements/GetAchievementsByUserId":
+    get:
+      tags:
+        - Achievements
+      parameters:
+        - name: userId
+          in: query
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+  "/Businesses/GetAllBusinesses":
+    get:
+      tags:
+        - Businesses
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Business"
+  "/Businesses/GetTop3Businesses":
+    get:
+      tags:
+        - Businesses
+      responses:
+        "200":
+          description: Success
+  "/Businesses/GetBusinessDetail":
+    get:
+      tags:
+        - Businesses
+      parameters:
+        - name: businessId
+          in: query
+          schema:
+            type: integer
+            format: int32
+      responses:
+        "200":
+          description: Success
+  "/Businesses/GetBusinessesByGoodFor":
+    get:
+      tags:
+        - Businesses
+      parameters:
+        - name: goodfor
+          in: query
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+  "/Businesses/GetBusinessesByActivity":
+    get:
+      tags:
+        - Businesses
+      parameters:
+        - name: activity
+          in: query
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+  "/Businesses/GetBusinessReviews":
+    get:
+      tags:
+        - Businesses
+      parameters:
+        - name: businessId
+          in: query
+          schema:
+            type: integer
+            format: int32
+      responses:
+        "200":
+          description: Success
+  "/Businesses/GetAllBusinessesByBusinessType":
+    get:
+      tags:
+        - Businesses
+      parameters:
+        - name: businessType
+          in: query
+          schema:
+            type: integer
+            format: int32
+      responses:
+        "200":
+          description: Success
+  "/Businesses/GetAllBusinessesByCategory":
+    get:
+      tags:
+        - Businesses
+      parameters:
+        - name: category
+          in: query
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+  "/Businesses/GetAllBusinessesByBusinessTypeAndCategory":
+    get:
+      tags:
+        - Businesses
+      parameters:
+        - name: businessType
+          in: query
+          schema:
+            type: integer
+            format: int32
+        - name: category
+          in: query
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+  "/Coupons/GetCouponsByUserId":
+    get:
+      tags:
+        - Coupons
+      parameters:
+        - name: userId
+          in: query
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+  "/Coupons/GetCounponDetail":
+    get:
+      tags:
+        - Coupons
+      parameters:
+        - name: couponId
+          in: query
+          schema:
+            type: integer
+            format: int32
+      responses:
+        "200":
+          description: Success
+  "/Histories/Get5RecentVisited":
+    get:
+      tags:
+        - Histories
+      parameters:
+        - name: userId
+          in: query
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+  "/Home/GenerateQRCode":
+    get:
+      tags:
+        - Home
+      parameters:
+        - name: baseString
+          in: query
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+  "/Users/Login":
+    get:
+      tags:
+        - Users
+      parameters:
+        - name: IdToken
+          in: query
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  userId:
+                    type: string
+  "/Users/GetUserProfile":
+    get:
+      tags:
+        - Users
+      parameters:
+        - name: userId
+          in: query
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+components:
+  schemas:
+    Business:
+      type: "object"
+      properties:
+        businessId:
+          type: "integer"
+          format: "int64"
+        businessType:
+          type: "integer"
+          format: "int64"
+        category:
+          type: "string"
+        businessName:
+          type: "string"
+        description:
+          type: "string"
+        rating:
+          type: "number"
+          format: "float"
+        visited:
+          type: "integer"
+          format: "int64"
+        physical:
+          type: "boolean"
+        coordinate:
+          type: "string"
+        address:
+          type: "string"
+        contact:
+          type: "string"
+        businessImage:
+          type: "string"

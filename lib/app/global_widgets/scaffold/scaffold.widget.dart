@@ -9,11 +9,13 @@ import 'package:yyc_scan/app/global_widgets/scaffold/drawer.widget.dart';
 
 class ScaffoldWidget extends GetView<ScaffoldController> {
   final Widget child;
+  final bool showBackgroundAsset;
   final EdgeInsets? backgroundElementPadding;
-  final GlobalKey scaffoldKey;
+  final GlobalKey<ScaffoldState> scaffoldKey;
   const ScaffoldWidget(
       {super.key,
       required this.child,
+      this.showBackgroundAsset = true,
       this.backgroundElementPadding,
       required this.scaffoldKey});
 
@@ -29,14 +31,15 @@ class ScaffoldWidget extends GetView<ScaffoldController> {
   Widget body() {
     return Stack(
       children: [
-        Padding(
-          padding:
-              backgroundElementPadding ?? const EdgeInsets.only(bottom: 150),
-          child: Center(
-              child: Image.asset(Constants().isDarkMode
-                  ? AppStrings().backgroundElementDarkImageUrl
-                  : AppStrings().backgroundElementLightImageUrl)),
-        ),
+        if (showBackgroundAsset)
+          Padding(
+            padding:
+                backgroundElementPadding ?? const EdgeInsets.only(bottom: 150),
+            child: Center(
+                child: Image.asset(Constants().isDarkMode
+                    ? AppStrings().backgroundElementDarkImageUrl
+                    : AppStrings().backgroundElementLightImageUrl)),
+          ),
         SafeArea(
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -47,7 +50,7 @@ class ScaffoldWidget extends GetView<ScaffoldController> {
                   const LogoWidget(),
                   IconButton(
                       onPressed: () {
-                        controller.scaffoldKey.currentState!.openEndDrawer();
+                        scaffoldKey.currentState!.openEndDrawer();
                       },
                       icon: const Icon(Icons.menu))
                 ],

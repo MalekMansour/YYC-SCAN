@@ -8,7 +8,7 @@
 PRODUCT_NAME = yyc_scan
 
 // The application's bundle identifier
-PRODUCT_BUNDLE_IDENTIFIER = com.advilbuddies.yycscan.yycScan
+PRODUCT_BUNDLE_IDENTIFIER = com.advilbuddies.yycscan
 
 // The copyright displayed in application information
 PRODUCT_COPYRIGHT = Copyright © 2024 com.advilbuddies.yyc_scan. All rights reserved.

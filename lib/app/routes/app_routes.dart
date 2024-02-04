@@ -7,6 +7,10 @@ abstract class Routes {
   static const NAVIGATION = _Paths.NAVIGATION;
   static const SCAN = _Paths.SCAN;
   static const ACTIVITIES = _Paths.ACTIVITIES;
+  static const PROFILE = _Paths.PROFILE;
+  static const SIGN_IN = _Paths.SIGN_IN;
+  static const COUPONS = _Paths.COUPONS;
+  static const SPLASHSCREEN = _Paths.SPLASHSCREEN;
 }
 
 abstract class _Paths {
@@ -15,4 +19,8 @@ abstract class _Paths {
   static const NAVIGATION = '/navigation';
   static const SCAN = '/scan';
   static const ACTIVITIES = '/activities';
+  static const PROFILE = '/profile';
+  static const SIGN_IN = '/sign-in';
+  static const COUPONS = '/coupons';
+  static const SPLASHSCREEN = '/splashscreen';
 }
