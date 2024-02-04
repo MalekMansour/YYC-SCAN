@@ -1,10 +1,11 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
+import 'package:flutter/material.dart';
+import '../controllers/scan_controller.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:yyc_scan/app/global_widgets/scaffold/scaffold.widget.dart';
 
-import '../controllers/scan_controller.dart';
+
 
 
 
