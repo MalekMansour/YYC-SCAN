@@ -17,7 +17,7 @@ class ActivityCard extends GetView<HomeController> {
             child: Obx(
               () => ListView.builder(
               shrinkWrap: true,
-              itemCount: 4,
+              itemCount: controller.activity.length,
               scrollDirection: Axis.vertical,
               itemBuilder: (context, index) {
                 return Padding(
