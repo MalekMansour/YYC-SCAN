@@ -10,13 +10,17 @@ import 'package:yyc_scan/app/global_widgets/scaffold/drawer.widget.dart';
 class ScaffoldWidget extends GetView<ScaffoldController> {
   final Widget child;
   final EdgeInsets? backgroundElementPadding;
+  final GlobalKey scaffoldKey;
   const ScaffoldWidget(
-      {super.key, required this.child, this.backgroundElementPadding});
+      {super.key,
+      required this.child,
+      this.backgroundElementPadding,
+      required this.scaffoldKey});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        key: controller.scaffoldKey,
+        key: scaffoldKey,
         endDrawer: DrawerWidget(),
         backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         body: body());

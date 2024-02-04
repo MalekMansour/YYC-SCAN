@@ -14,6 +14,7 @@ class HomeView extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     return ScaffoldWidget(
+      scaffoldKey: controller.scaffoldKey,
       backgroundElementPadding: EdgeInsets.only(top: 400),
       child: Column(children: [
         WelcomeMessageWidget(

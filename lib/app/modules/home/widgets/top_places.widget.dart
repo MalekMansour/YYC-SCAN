@@ -20,7 +20,6 @@ class TopPlacesWidget extends GetView<HomeController> {
               Text('See More...')
             ],
           ),
-          ActivityCard()
           // SizedBox(
           //   height: 120,
           //   child: Card(
