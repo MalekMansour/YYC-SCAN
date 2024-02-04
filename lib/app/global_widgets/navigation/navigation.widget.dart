@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 import 'package:yyc_scan/app/global_widgets/navigation/navigation_controller.dart';
 import 'package:yyc_scan/app/modules/activities/views/activities_view.dart';
+import 'package:yyc_scan/app/modules/chatbot/views/chatbot_view.dart';
 import 'package:yyc_scan/app/modules/home/views/home_view.dart';
 import 'package:yyc_scan/app/modules/profile/views/profile_view.dart';
 import 'package:yyc_scan/app/modules/scan/views/scan_view.dart';
@@ -12,13 +13,7 @@ class NavigationWidget extends GetView<NavigationController> {
   const NavigationWidget({super.key});
 
   List<Widget> buildScreens() {
-    return [
-      HomeView(),
-      ActivitiesView(),
-      ScanView(),
-      Container(),
-      ProfileView()
-    ];
+    return [HomeView(), ActivitiesView(), ScanView(), ChatBot(), ProfileView()];
   }
 
   List<PersistentBottomNavBarItem> navBarsItems() {
@@ -30,7 +25,7 @@ class NavigationWidget extends GetView<NavigationController> {
         inactiveColorPrimary: CupertinoColors.systemGrey,
       ),
       PersistentBottomNavBarItem(
-        icon: Icon(CupertinoIcons.person),
+        icon: Icon(Icons.dashboard),
         title: ("Activities".tr),
         activeColorPrimary: Color(0xFFD32639),
         inactiveColorPrimary: CupertinoColors.systemGrey,
@@ -45,7 +40,7 @@ class NavigationWidget extends GetView<NavigationController> {
         inactiveColorPrimary: CupertinoColors.systemGrey,
       ),
       PersistentBottomNavBarItem(
-        icon: Icon(CupertinoIcons.settings),
+        icon: Icon(Icons.chat_outlined),
         title: ("AI".tr),
         activeColorPrimary: Color(0xFFD32639),
         inactiveColorPrimary: CupertinoColors.systemGrey,

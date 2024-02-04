@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:qr_flutter/qr_flutter.dart';
 import 'package:slide_indexed_stack/slide_indexed_stack.dart';
 import 'package:yyc_scan/app/core/theme/app_color.dart';
 import 'package:yyc_scan/app/core/theme/text_theme.dart';
@@ -64,13 +65,13 @@ class ProfileView extends GetView<ProfileController> {
                 height: 10,
               ),
               Text(
-                'Your Name',
+                'Cal Gary',
                 style: subTitle.copyWith(fontWeight: FontWeight.w600),
               ),
               const SizedBox(
                 height: 8,
               ),
-              Text('Bio and stuff', style: appBarText),
+              Text('Hi! I\'m Cal Gary. Nice to meet you', style: appBarText),
               const SizedBox(
                 height: 10,
               ),
@@ -80,6 +81,46 @@ class ProfileView extends GetView<ProfileController> {
                           MaterialStatePropertyAll(AppColors().grey)),
                   onPressed: () {},
                   child: Text('Edit Profile'.tr)),
+              const SizedBox(
+                height: 10,
+              ),
+              FilledButton(
+                  style: ButtonStyle(
+                      backgroundColor:
+                          MaterialStatePropertyAll(AppColors().grey)),
+                  onPressed: () {
+                    Get.dialog(
+                        barrierDismissible: true,
+                        GestureDetector(
+                          onTap: () {
+                            Get.back();
+                          },
+                          child: Dialog(
+                            backgroundColor: Colors.transparent,
+                            child: WillPopScope(
+                              onWillPop: () async => false,
+                              child: Container(
+                                padding: EdgeInsets.all(10),
+                                decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.circular(20)),
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    QrImageView(
+                                      data: '1234567890',
+                                      version: QrVersions.auto,
+                                      size: 200.0,
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+                        ));
+                  },
+                  child: Text('View My QR Code'.tr)),
               const SizedBox(
                 height: 20,
               ),
