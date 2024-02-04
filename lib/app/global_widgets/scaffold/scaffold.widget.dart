@@ -6,6 +6,7 @@ import 'package:yyc_scan/app/core/values/strings.dart';
 import 'package:yyc_scan/app/global_widgets/images/logo.widget.dart';
 import 'package:yyc_scan/app/global_widgets/scaffold/controller/scaffold.controller.dart';
 import 'package:yyc_scan/app/global_widgets/scaffold/drawer.widget.dart';
+import 'package:yyc_scan/app/routes/app_pages.dart';
 
 class ScaffoldWidget extends GetView<ScaffoldController> {
   final Widget child;
@@ -22,8 +23,6 @@ class ScaffoldWidget extends GetView<ScaffoldController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        key: scaffoldKey,
-        endDrawer: DrawerWidget(),
         backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         body: body());
   }
@@ -50,7 +49,7 @@ class ScaffoldWidget extends GetView<ScaffoldController> {
                   const LogoWidget(),
                   IconButton(
                       onPressed: () {
-                        scaffoldKey.currentState!.openEndDrawer();
+                        Get.toNamed(Routes.SETTINGS);
                       },
                       icon: const Icon(Icons.menu))
                 ],

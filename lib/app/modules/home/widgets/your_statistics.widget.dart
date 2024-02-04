@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:yyc_scan/app/core/theme/text_theme.dart';
 import 'package:yyc_scan/app/global_widgets/texts/key_with_value.widget.dart';
 import 'package:yyc_scan/app/global_widgets/texts/title.widget.dart';
+import 'package:yyc_scan/app/modules/home/widgets/you_statistics_level_and_exp.widget.dart';
 import 'package:yyc_scan/app/modules/home/widgets/your_statistics_level.widget.dart';
 
 class YourStatisticsWidget extends StatelessWidget {
@@ -14,8 +16,8 @@ class YourStatisticsWidget extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          const TitleWidget(
-              iconData: Icons.newspaper_rounded, text: 'Your Statistics'),
+          TitleWidget(
+              iconData: Icons.newspaper_rounded, text: 'Your Statistics'.tr),
           const SizedBox(
             height: 20,
           ),
@@ -28,60 +30,11 @@ class YourStatisticsWidget extends StatelessWidget {
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(15),
                       color: Theme.of(context).colorScheme.surface),
-                  child: Column(
+                  child: const Column(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
+                        YourStatisticsLevelAndExpWidget(),
                         Row(
-                          children: [
-                            Container(
-                              height: 50,
-                              width: 40,
-                              decoration: const BoxDecoration(
-                                  image: DecorationImage(
-                                      fit: BoxFit.cover,
-                                      image: AssetImage(
-                                          'assets/images/your-statistics-level-background.png'))),
-                              child: Center(
-                                  child: Text(
-                                '10',
-                                style: menuText.copyWith(
-                                    fontWeight: FontWeight.w700),
-                              )),
-                            ),
-                            const SizedBox(
-                              width: 8,
-                            ),
-                            Expanded(
-                              child: Column(
-                                children: [
-                                  const KeyWithValueWidget(
-                                      title: 'Exp:', value: '500/1000'),
-                                  const SizedBox(
-                                    height: 8,
-                                  ),
-                                  SizedBox(
-                                    height: 8,
-                                    width: Size.infinite.width,
-                                    child: const Row(
-                                      children: [
-                                        YourStatisticsLevelWidget(
-                                          isCompleted: true,
-                                        ),
-                                        SizedBox(
-                                          width: 4,
-                                        ),
-                                        YourStatisticsLevelWidget(
-                                          isCompleted: false,
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
-                        const Row(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
                             KeyWithValueWidget(title: 'Visited:', value: '10'),
@@ -100,15 +53,15 @@ class YourStatisticsWidget extends StatelessWidget {
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(15),
                     color: Theme.of(context).colorScheme.surface),
-                child: const Column(
+                child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Icon(Icons.money),
-                      SizedBox(
+                      const Icon(Icons.money),
+                      const SizedBox(
                         height: 10,
                       ),
                       Text(
-                        'Your\nCoupons',
+                        'Your\ncoupons'.tr,
                         textAlign: TextAlign.center,
                         style: buttonText,
                       )

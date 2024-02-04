@@ -25,14 +25,14 @@ class NavigationWidget extends GetView<NavigationController> {
     return [
       PersistentBottomNavBarItem(
         icon: Icon(CupertinoIcons.home),
-        title: ("Home"),
-        activeColorPrimary: CupertinoColors.activeBlue,
+        title: ("Home".tr),
+        activeColorPrimary: Color(0xFFD32639),
         inactiveColorPrimary: CupertinoColors.systemGrey,
       ),
       PersistentBottomNavBarItem(
         icon: Icon(CupertinoIcons.person),
-        title: ("Activities"),
-        activeColorPrimary: CupertinoColors.activeBlue,
+        title: ("Activities".tr),
+        activeColorPrimary: Color(0xFFD32639),
         inactiveColorPrimary: CupertinoColors.systemGrey,
       ),
       PersistentBottomNavBarItem(
@@ -40,20 +40,20 @@ class NavigationWidget extends GetView<NavigationController> {
           CupertinoIcons.qrcode,
           color: Colors.white,
         ),
-        title: ("Scan"),
-        activeColorPrimary: CupertinoColors.activeBlue,
+        title: ("Scan".tr),
+        activeColorPrimary: Color(0xFFD32639),
         inactiveColorPrimary: CupertinoColors.systemGrey,
       ),
       PersistentBottomNavBarItem(
         icon: Icon(CupertinoIcons.settings),
-        title: ("Settings"),
-        activeColorPrimary: CupertinoColors.activeBlue,
+        title: ("AI".tr),
+        activeColorPrimary: Color(0xFFD32639),
         inactiveColorPrimary: CupertinoColors.systemGrey,
       ),
       PersistentBottomNavBarItem(
         icon: Icon(CupertinoIcons.person),
-        title: ("Profile"),
-        activeColorPrimary: CupertinoColors.activeBlue,
+        title: ("Profile".tr),
+        activeColorPrimary: Color(0xFFD32639),
         inactiveColorPrimary: CupertinoColors.systemGrey,
       ),
     ];
@@ -75,9 +75,8 @@ class NavigationWidget extends GetView<NavigationController> {
       hideNavigationBarWhenKeyboardShows:
           true, // Recommended to set 'resizeToAvoidBottomInset' as true while using this argument. Default is true.
       decoration: NavBarDecoration(
-        borderRadius: BorderRadius.circular(10.0),
-        colorBehindNavBar: Colors.white,
-      ),
+          borderRadius: BorderRadius.circular(10.0),
+          colorBehindNavBar: Color(0xFF1E1E1E)),
       popAllScreensOnTapOfSelectedTab: true,
       popActionScreens: PopActionScreensType.all,
       itemAnimationProperties: ItemAnimationProperties(

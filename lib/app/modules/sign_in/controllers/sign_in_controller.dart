@@ -10,22 +10,22 @@ class SignInController extends GetxController {
   final GlobalKey<FormBuilderState> formKey = GlobalKey<FormBuilderState>();
 
   Future<void> login(String email, String password) async {
-    EasyLoading.show(status: 'Logging in...');
+    EasyLoading.show(status: 'Logging in...'.tr);
     try {
       await Get.find<AuthService>().signInWithUserAndPassword(email, password);
 
-      EasyLoading.showSuccess('Successfully logged in');
+      EasyLoading.showSuccess('Successfully logged in'.tr);
     } on FirebaseAuthException catch (e) {
       EasyLoading.showError('Invalid credentials. Please try again later.');
     }
   }
 
   Future<void> loginViaGoogle() async {
-    EasyLoading.show(status: 'Logging in...');
+    EasyLoading.show(status: 'Logging in...'.tr);
     try {
       await Get.find<AuthService>().signInWithGoogle();
 
-      EasyLoading.showSuccess('Successfully logged in');
+      EasyLoading.showSuccess('Successfully logged in'.tr);
     } on FirebaseAuthException catch (e) {
       EasyLoading.showError('Invalid credentials. Please try again later.');
     }

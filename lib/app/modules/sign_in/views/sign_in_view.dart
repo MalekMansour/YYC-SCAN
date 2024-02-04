@@ -6,6 +6,7 @@ import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:get/get.dart';
 import 'package:yyc_scan/app/core/theme/app_color.dart';
 import 'package:yyc_scan/app/global_widgets/images/logo.widget.dart';
+import 'package:yyc_scan/app/routes/app_pages.dart';
 import 'package:yyc_scan/app/services/auth.service.dart';
 
 import '../controllers/sign_in_controller.dart';
@@ -22,9 +23,17 @@ class SignInView extends GetView<SignInController> {
             padding: const EdgeInsets.all(20.0),
             child: Column(
               children: [
-                const Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [Icon(Icons.language), Text('Change language')],
+                InkWell(
+                  onTap: () {
+                    Get.toNamed(Routes.LANGUAGE);
+                  },
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      Icon(Icons.language),
+                      Text('Change language'.tr)
+                    ],
+                  ),
                 ),
                 const SizedBox(
                   height: 20,
@@ -35,20 +44,20 @@ class SignInView extends GetView<SignInController> {
                 const SizedBox(
                   height: 60,
                 ),
-                const Align(
+                Align(
                   alignment: Alignment.centerLeft,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Welcome Back!',
+                        'Welcome Back!'.tr,
                         style: TextStyle(
                             fontSize: 30, fontWeight: FontWeight.w700),
                       ),
                       SizedBox(
                         height: 10,
                       ),
-                      Text('Please sign in to continue',
+                      Text('Please sign in to continue'.tr,
                           style: TextStyle(
                               fontSize: 15, fontWeight: FontWeight.w500)),
                     ],
@@ -63,12 +72,12 @@ class SignInView extends GetView<SignInController> {
                     children: [
                       FormBuilderTextField(
                         name: 'email',
-                        decoration: const InputDecoration(
+                        decoration: InputDecoration(
                           focusColor: Colors.white,
                           labelStyle: TextStyle(color: Colors.white),
                           focusedBorder: OutlineInputBorder(
                               borderSide: BorderSide(color: Colors.grey)),
-                          labelText: 'Email',
+                          labelText: 'Email'.tr,
                           border: OutlineInputBorder(
                               borderSide: BorderSide(color: Colors.grey)),
                         ),
@@ -80,21 +89,21 @@ class SignInView extends GetView<SignInController> {
                       const SizedBox(height: 15),
                       FormBuilderTextField(
                         name: 'password',
-                        decoration: const InputDecoration(
+                        decoration: InputDecoration(
                             focusColor: Colors.white,
                             labelStyle: TextStyle(color: Colors.white),
                             focusedBorder: OutlineInputBorder(
                                 borderSide: BorderSide(color: Colors.grey)),
                             border: OutlineInputBorder(
                                 borderSide: BorderSide(color: Colors.grey)),
-                            labelText: 'Password'),
+                            labelText: 'Password'.tr),
                         obscureText: true,
                         validator: FormBuilderValidators.compose([
                           FormBuilderValidators.required(),
                         ]),
                       ),
                       const SizedBox(height: 30),
-                      Text('Forgot Password?'),
+                      Text('Forgot Password?'.tr),
                       const SizedBox(height: 30),
                       InkWell(
                         onTap: () {
@@ -112,7 +121,7 @@ class SignInView extends GetView<SignInController> {
                           padding: EdgeInsets.symmetric(
                               horizontal: 30, vertical: 15),
                           child: Text(
-                            'LOGIN',
+                            'LOGIN'.tr,
                             style: TextStyle(fontWeight: FontWeight.w600),
                           ),
                         ),
@@ -121,7 +130,7 @@ class SignInView extends GetView<SignInController> {
                         height: 20,
                       ),
                       Text(
-                        'OR',
+                        'OR'.tr,
                         style: TextStyle(fontSize: 10),
                       ),
                       const SizedBox(

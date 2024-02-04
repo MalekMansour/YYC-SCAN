@@ -4,6 +4,7 @@ final ThemeData darkTheme = ThemeData(
     textSelectionTheme: TextSelectionThemeData(
       cursorColor: Colors.white,
     ),
+    appBarTheme: AppBarTheme(backgroundColor: Color(0xFF1E1E1E)),
     colorScheme: const ColorScheme(
         brightness: Brightness.dark,
         primary: Color.fromRGBO(30, 30, 30, 1),

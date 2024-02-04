@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:yyc_scan/app/global_widgets/texts/title.widget.dart';
 
 class TopPlacesWidget extends StatelessWidget {
@@ -6,15 +7,15 @@ class TopPlacesWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Padding(
+    return Padding(
       padding: EdgeInsets.symmetric(vertical: 20),
       child: Column(
         children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              TitleWidget(iconData: Icons.place, text: 'Top Places'),
-              Text('See More...')
+              TitleWidget(iconData: Icons.place, text: 'Top Places'.tr),
+              Text('See more...'.tr)
             ],
           ),
         ],

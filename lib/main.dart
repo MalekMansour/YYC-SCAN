@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:yyc_scan/app/core/theme/app_theme.dart';
 import 'package:yyc_scan/app/core/values/constants.dart';
 import 'package:yyc_scan/app/core/values/strings.dart';
+import 'package:yyc_scan/app/core/values/translations.dart';
 import 'package:yyc_scan/app/utils/dependency_creator.dart';
 
 import 'app/routes/app_pages.dart';
@@ -15,10 +16,12 @@ void main() {
   runApp(
     GetMaterialApp(
       title: AppStrings().appName,
+      locale: const Locale('en', 'CA'),
       initialRoute: AppPages.INITIAL,
       getPages: AppPages.routes,
       theme: Constants().isDarkMode ? darkTheme : lightTheme,
       builder: EasyLoading.init(),
+      translationsKeys: AppTranslation.translations,
     ),
   );
 }
