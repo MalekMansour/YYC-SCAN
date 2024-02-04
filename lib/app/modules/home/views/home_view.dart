@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:yyc_scan/app/global_widgets/scaffold/scaffold.widget.dart';
 import 'package:yyc_scan/app/global_widgets/texts/welcome_message.widget.dart';
-import 'package:yyc_scan/app/modules/home/views/activity_tiles.dart';
 import 'package:yyc_scan/app/modules/home/widgets/top_places.widget.dart';
 import 'package:yyc_scan/app/modules/home/widgets/your_statistics.widget.dart';
 

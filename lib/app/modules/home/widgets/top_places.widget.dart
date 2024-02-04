@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'package:yyc_scan/app/global_widgets/texts/title.widget.dart';
 import 'package:yyc_scan/app/modules/home/controllers/home_controller.dart';
 import 'package:yyc_scan/app/modules/home/views/activity_tiles.dart';
-import 'package:yyc_scan/app/modules/home/widgets/activity_tiles.dart';
 
 class TopPlacesWidget extends GetView<HomeController> {
   const TopPlacesWidget({super.key});
@@ -21,6 +20,7 @@ class TopPlacesWidget extends GetView<HomeController> {
               Text('See More...')
             ],
           ),
+          ActivityCard()
           // SizedBox(
           //   height: 120,
           //   child: Card(
