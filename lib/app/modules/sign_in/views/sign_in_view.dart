@@ -147,7 +147,7 @@ class SignInView extends GetView<SignInController> {
                               padding: EdgeInsets.all(20),
                               decoration:
                                   BoxDecoration(color: AppColors().grey),
-                              child: Text('G'),
+                              child: Text('Google'),
                             ),
                           )
                         ],

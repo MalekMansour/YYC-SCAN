@@ -13,8 +13,6 @@ class SignInController extends GetxController {
     EasyLoading.show(status: 'Logging in...'.tr);
     try {
       await Get.find<AuthService>().signInWithUserAndPassword(email, password);
-
-      EasyLoading.showSuccess('Successfully logged in'.tr);
     } on FirebaseAuthException catch (e) {
       EasyLoading.showError('Invalid credentials. Please try again later.');
     }
@@ -24,8 +22,6 @@ class SignInController extends GetxController {
     EasyLoading.show(status: 'Logging in...'.tr);
     try {
       await Get.find<AuthService>().signInWithGoogle();
-
-      EasyLoading.showSuccess('Successfully logged in'.tr);
     } on FirebaseAuthException catch (e) {
       EasyLoading.showError('Invalid credentials. Please try again later.');
     }

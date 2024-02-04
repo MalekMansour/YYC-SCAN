@@ -5,6 +5,7 @@ import 'package:yyc_scan/app/global_widgets/texts/key_with_value.widget.dart';
 import 'package:yyc_scan/app/global_widgets/texts/title.widget.dart';
 import 'package:yyc_scan/app/modules/home/widgets/you_statistics_level_and_exp.widget.dart';
 import 'package:yyc_scan/app/modules/home/widgets/your_statistics_level.widget.dart';
+import 'package:yyc_scan/app/modules/profile/widgets/coupons.widget.dart';
 
 class YourStatisticsWidget extends StatelessWidget {
   const YourStatisticsWidget({super.key});
@@ -47,25 +48,30 @@ class YourStatisticsWidget extends StatelessWidget {
               const SizedBox(
                 width: 10,
               ),
-              Container(
-                height: 110,
-                padding: const EdgeInsets.all(10),
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(15),
-                    color: Theme.of(context).colorScheme.surface),
-                child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      const Icon(Icons.money),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      Text(
-                        'Your\ncoupons'.tr,
-                        textAlign: TextAlign.center,
-                        style: buttonText,
-                      )
-                    ]),
+              InkWell(
+                onTap: () {
+                  Get.to(CouponsWidget());
+                },
+                child: Container(
+                  height: 110,
+                  padding: const EdgeInsets.all(10),
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(15),
+                      color: Theme.of(context).colorScheme.surface),
+                  child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const Icon(Icons.money),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        Text(
+                          'Your\ncoupons'.tr,
+                          textAlign: TextAlign.center,
+                          style: buttonText,
+                        )
+                      ]),
+                ),
               )
             ],
           )
