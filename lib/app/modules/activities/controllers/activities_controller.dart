@@ -25,12 +25,65 @@ class ActivitiesController extends GetxController {
 
   BusinessesApi businessesApi = BusinessesApi(Get.find<ApiClient>());
   RxList<Business> allBusinesses = RxList<Business>();
+  RxList<Business> services = RxList<Business>();
   RxMap<MarkerId, Marker> markers = RxMap<MarkerId, Marker>();
   CustomInfoWindowController customInfoWindowController =
       CustomInfoWindowController();
 
   final count = 0.obs;
   RxBool isMapView = RxBool(true);
+
+  List<Map<String, dynamic>> servicesList = [
+    {
+      "businessId": 1,
+      "businessType": 0,
+      "category": "Government Services",
+      "businessName": "Service Canada - Calgary",
+      "description":
+          "Provides Social Insurance Number (SIN) application services",
+      "rating": 4.5,
+      "visited": 150,
+      "physical": true,
+      "coordinate": "51.0480, -114.0719",
+      "address": "6712 Fisher St SE, Calgary, AB",
+      "contact": "1-800-206-7218",
+      "businessImage": "image_url_service_canada"
+    },
+    {
+      "businessId": 2,
+      "businessType": 0,
+      "category": "Government Services",
+      "businessName": "Alberta Health Services - Calgary Zone",
+      "description": "Provides Alberta Health Card registration services",
+      "rating": 4.7,
+      "visited": 200,
+      "physical": true,
+      "coordinate": "51.0496, -114.0719",
+      "address": "1213 4 St SW, Calgary, AB",
+      "contact": "403-944-1110",
+      "businessImage": "image_url_health_services"
+    },
+    {
+      "businessId": 3,
+      "businessType": 0,
+      "category": "Settlement Services",
+      "businessName": "Calgary Immigrant Services",
+      "description": "Offers settlement and integration support for immigrants",
+      "rating": 4.8,
+      "visited": 120,
+      "physical": true,
+      "coordinate": "51.0518, -114.0719",
+      "address": "910 7 Ave SW, Calgary, AB",
+      "contact": "403-555-1234",
+      "businessImage": "image_url_immigrant_services"
+    }
+  ];
+
+  void getServices() {
+    servicesList.forEach((element) {
+      services.add(Business.fromJson(element)!);
+    });
+  }
 
   Future<void> getActivities() async {
     allBusinesses.value =
@@ -135,6 +188,7 @@ class ActivitiesController extends GetxController {
   @override
   void onInit() {
     getActivities();
+    getServices();
     super.onInit();
   }
 }

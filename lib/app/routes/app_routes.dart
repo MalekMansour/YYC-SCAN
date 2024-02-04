@@ -13,6 +13,9 @@ abstract class Routes {
   static const SPLASHSCREEN = _Paths.SPLASHSCREEN;
   static const SETTINGS = _Paths.SETTINGS;
   static const LANGUAGE = _Paths.LANGUAGE;
+  static const CHATBOT = _Paths.CHATBOT;
+  static const SIGN_UP = _Paths.SIGN_UP;
+  static const PLACE_DETAILS = _Paths.PLACE_DETAILS;
 }
 
 abstract class _Paths {
@@ -27,4 +30,7 @@ abstract class _Paths {
   static const SPLASHSCREEN = '/splashscreen';
   static const SETTINGS = '/settings';
   static const LANGUAGE = '/language';
+  static const CHATBOT = '/chatbot';
+  static const SIGN_UP = '/sign-up';
+  static const PLACE_DETAILS = '/place-details';
 }

@@ -31,6 +31,9 @@ class SignInView extends GetView<SignInController> {
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       Icon(Icons.language),
+                      const SizedBox(
+                        width: 4,
+                      ),
                       Text('Change language'.tr)
                     ],
                   ),
@@ -145,12 +148,33 @@ class SignInView extends GetView<SignInController> {
                             },
                             child: Container(
                               padding: EdgeInsets.all(20),
-                              decoration:
-                                  BoxDecoration(color: AppColors().grey),
-                              child: Text('Google'),
+                              decoration: BoxDecoration(
+                                  color: AppColors().grey,
+                                  borderRadius: BorderRadius.circular(40)),
+                              child: Text('Sign in Google'),
                             ),
                           )
                         ],
+                      ),
+                      const SizedBox(height: 40),
+                      InkWell(
+                        onTap: () {
+                          Get.offAndToNamed(Routes.SIGN_UP);
+                        },
+                        child: Container(
+                          margin: EdgeInsets.only(top: 50),
+                          width: Size.infinite.width,
+                          child: const Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Text("Do you have an account? "),
+                              Text("Sign Up",
+                                  style: TextStyle(
+                                      color: Color.fromRGBO(133, 83, 158, 1)))
+                            ],
+                          ),
+                        ),
                       )
                     ],
                   ),

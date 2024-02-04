@@ -86,14 +86,14 @@ class SettingsView extends GetView<SettingsController> {
                     ListTile(
                       contentPadding: EdgeInsets.zero,
                       dense: false,
-                      leading: Image.asset('assets/images/settings_2.png'),
+                      leading: Image.asset('assets/images/settings_5.png'),
                       title: Text('Redeem Code'.tr),
                       trailing: const Icon(Icons.arrow_forward_ios),
                     ),
                     ListTile(
                       contentPadding: EdgeInsets.zero,
                       dense: false,
-                      leading: Image.asset('assets/images/settings_2.png'),
+                      leading: Image.asset('assets/images/settings_6.png'),
                       title: Text('About'.tr),
                       trailing: const Icon(Icons.arrow_forward_ios),
                     ),

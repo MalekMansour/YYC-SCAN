@@ -1,5 +1,18 @@
 {
   "projects": {
     "default": "test-9fe53"
-  }
+  },
+  "targets": {
+    "test-9fe53": {
+      "hosting": {
+        "beta": [
+          "call-gari"
+        ],
+        "alpha": [
+          "test-9fe53"
+        ]
+      }
+    }
+  },
+  "etags": {}
 }

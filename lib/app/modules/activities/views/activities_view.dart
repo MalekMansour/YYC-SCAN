@@ -6,6 +6,7 @@ import 'package:yyc_scan/app/core/theme/app_color.dart';
 import 'package:yyc_scan/app/global_widgets/fields/search_bar.widget.dart';
 import 'package:yyc_scan/app/global_widgets/scaffold/scaffold.widget.dart';
 import 'package:yyc_scan/app/modules/activities/widgets/maps.widget.dart';
+import 'package:yyc_scan/app/modules/home/widgets/activities.widget.dart';
 
 import '../controllers/activities_controller.dart';
 
@@ -146,7 +147,7 @@ class ActivitiesView extends GetView<ActivitiesController> {
                         children: [
                           const MapsWidget(),
                           // change to listview activities
-                          Container()
+                          SingleChildScrollView(child: ActivityCard())
                         ],
                       ),
                     )

@@ -7,6 +7,7 @@ class ProfileController extends GetxController {
   final GlobalKey<ScaffoldState> scaffoldKey3 = new GlobalKey<ScaffoldState>();
   RxInt index = RxInt(0);
   final count = 0.obs;
+
   @override
   void onInit() {
     super.onInit();

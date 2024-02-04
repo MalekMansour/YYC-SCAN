@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:yyc_scan/app/global_widgets/scaffold/scaffold.widget.dart';
 import 'package:yyc_scan/app/global_widgets/texts/welcome_message.widget.dart';
+import 'package:yyc_scan/app/modules/home/widgets/services.widget.dart';
+import 'package:yyc_scan/app/modules/home/widgets/services_list.widget.dart';
 import 'package:yyc_scan/app/modules/home/widgets/top_places.widget.dart';
 import 'package:yyc_scan/app/modules/home/widgets/your_statistics.widget.dart';
 
@@ -15,12 +17,13 @@ class HomeView extends GetView<HomeController> {
     return ScaffoldWidget(
       scaffoldKey: controller.scaffoldKey,
       backgroundElementPadding: EdgeInsets.only(top: 400),
-      child: Column(children: [
+      child: ListView(children: [
         WelcomeMessageWidget(
           name: 'Gary',
         ),
         YourStatisticsWidget(),
-        TopPlacesWidget()
+        ServicesListwidget(),
+        TopPlacesWidget(),
       ]),
     );
   }
