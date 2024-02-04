@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap">
+  <title>Calgary Assistant</title>
+  <style>
+    body {
+        background: linear-gradient(to right, #1e1e1e, #343434);
+        color: #ccc;
+        margin: 0;
+        padding: 0;
+        font-family: 'Lato', sans-serif;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+    }
+
+    #chat-container {
+        width: 400px;
+        height: 700px;
+        padding: 20px;
+        border: 5px solid;
+        border-image: linear-gradient(to right, #DC2430, #7B4397) 1;
+        border-radius: 12px;
+        background-color: rgba(29, 29, 29, 0.9);
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        overflow: hidden;
+    }
+
+    #category-bar {
+        background: #171717;
+        border-radius: 12px;
+        display: flex;
+        overflow-x: auto;
+        white-space: nowrap;
+        margin-bottom: 10px;
+        -ms-overflow-style: none; 
+        scrollbar-width: none;  
+    }
+
+    .category-button {
+        background: none;
+        border: none;
+        color: #ccc;
+        cursor: pointer;
+        font-size: 14px;
+        margin-right: 10px;
+        padding: 5px;
+        transition: color 0.3s ease;
+    }
+
+    .category-button:hover {
+        color: #fff;
+    }
+
+    #chat-log {
+        flex: 1;
+        overflow-y: auto;
+        margin-bottom: 10px;
+        padding-right: 10px;
+        -ms-overflow-style: none;  
+        scrollbar-width: none;  
+    }
+
+    #chat-log::-webkit-scrollbar,
+    #category-bar::-webkit-scrollbar {
+        display: none; 
+    }
+
+    input {
+        height: 40px;
+        width: calc(100%);
+        background: rgb(29, 29, 29);
+        color: #ccc;
+        border: none;
+        border-radius: 4px;
+        margin-top: 10px;
+        padding: 10px;
+        box-sizing: border-box;
+        align-self: flex-end;
+        font-size: 14px;
+    }
+
+    button#send-button {
+        height: 40px;
+        background: #7B4397;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background 0.3s ease;
+        font-size: 14px;
+    }
+
+    button#send-button:hover {
+        background: #c09ad3;
+    }
+
+    #cooldown-message,
+    #error-message,
+    #typing-indicator,
+    #welcome-message {
+        font-family: 'Lato', sans-serif;        
+        text-align: center;
+        font-size: 24px; 
+        color: #fff; 
+        margin-bottom: 20px; 
+    }
+
+    a {
+      color: #800080;
+      text-decoration: none; 
+    }
+
+    a:hover {
+      text-decoration: underline; 
+    }
+
+    @media (max-width: 600px) {
+        #chat-container {
+            max-width: 90%;
+        }
+    }
+    
+</style>
+</head>
+<body>
+
+<div id="chat-container">
+    <div id="category-bar">
+        <button class="category-button" onclick="changePrompt('YYC Scan')">YYC Scan</button>
+        <button class="category-button" onclick="changePrompt('Immigration')">Immigration</button>
+        <button class="category-button" onclick="changePrompt('Citizenship')">Citizenship</button>
+        <button class="category-button" onclick="changePrompt('Taxes')">Taxes</button>
+        <button class="category-button" onclick="changePrompt('Health Care')">Health Care</button>
+        <button class="category-button" onclick="changePrompt('Health Card')">Health Card</button>
+        <button class="category-button" onclick="changePrompt('Culture')">Culture</button>
+        <button class="category-button" onclick="changePrompt('History')">History</button>
+      <button class="category-button" onclick="changePrompt('Weather')">Weather</button>
+        <button class="category-button" onclick="changePrompt('Airport')">Airport</button>
+        <button class="category-button" onclick="changePrompt('Jobs')">Jobs</button>
+        <button class="category-button" onclick="changePrompt('SIN')">SIN</button>
+        <button class="category-button" onclick="changePrompt('Indigenous People')">Indigenous People</button>
+        <button class="category-button" onclick="changePrompt('Veterans')">Veterans</button>
+        <button class="category-button" onclick="changePrompt('Youth Programs')">Youth Programs</button>
+        <button class="category-button" onclick="changePrompt('Volunteering Programs')">Volunteering Programs</button>
+    </div>
+  <div id="welcome-message">How can I help you today?</div>
+  <div id="chat-log"></div>
+  <div id="typing-indicator"></div>
+  <input type="text" id="user-input" placeholder="Type your message...">
+  <button id="send-button" onclick="sendMessage()">Send</button>
+</div>
+
+<script>
+  const openaiApiKey = "MY_API_KEY";
+  const messages = [];
+  const chatLog = document.getElementById("chat-log");
+  const userInput = document.getElementById("user-input");
+  const typingIndicator = document.getElementById("typing-indicator")
+
+  const systemMsg = `
+  You are the Calgary Assistant for YYC Scan. 
+  Your primary function is to provide comprehensive and accurate information exclusively about Calgary. 
+  Ensure all responses adhere strictly to this geographic scope. 
+  Additionally, actively moderate and filter out any inappropriate or unrelated queries. 
+  Your goal is to be a reliable source of information regarding Calgary's attractions, events, 
+  local culture, notable landmarks, and any other relevant topics specific to the city. 
+  If the user asks about "points" tell them that they can see their points in the home page and they can redeem their prizes in the profile section.
+  YYC Scan is an app that gives points to the user when they go to places in calgary. When they make their purchase, they get their QR Code scanned to redeem points.
+  Every time the user reach a certain amount of points, he lvls up and get 1 free coupon/discount to a new place. 
+  Users get point when they come back to a place they've already been to but gets more when it's their first time.
+  YYC Scan offers information about immigration, citizenship, health care, culture, history, taxes, etc.
+  If the user asks for directions/maps/places, you can tell them to look at the maps feature the YYC Scan offers.
+  If the user speaks to you in any other language, make sure to match their language as they might not understand english very well.
+  If the user asks about when to take out their garbage, tell them to get the calgary garbage app.
+  Provide useful government URLS for the user. Don't mention the YYC Scan website. 
+  Make sure every link starts with https//. Make sure there is no period at the end of URLS.
+  `;
+
+  messages.push({ "role": "system", "content": systemMsg });
+
+  function updateChatLog() {
+    chatLog.innerHTML = messages
+      .filter(msg => msg.role !== "system")  
+      .map(msg => `<p><strong>${msg.role}:</strong> ${makeLinksClickable(msg.content)}</p>`)
+      .join('');
+  }
+
+  function makeLinksClickable(content) {
+    const urlRegex = /(https?:\/\/[^\s]+)/g;
+    return content.replace(urlRegex, (url) => {
+      return `<a href="#" onclick="window.open('${url}', '_blank'); return false;">${url}</a>`;
+    });
+  }
+
+  function changePrompt(category) {
+    const userInput = document.getElementById("user-input");
+    userInput.value = `Tell me about the ${category} in Calgary.`;
+  }
+
+  function showTypingIndicator() {
+    typingIndicator.innerText = "Calgary Assistant is typing...";
+  }
+
+  function hideTypingIndicator() {
+    typingIndicator.innerText = "";
+  }
+
+  function sendMessage() {
+    const userMessage = userInput.value;
+    messages.push({ "role": "user", "content": userMessage });
+
+    showTypingIndicator();
+
+    fetch("https://api.openai.com/v1/chat/completions", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${openaiApiKey}`
+      },
+      body: JSON.stringify({
+        model: "gpt-3.5-turbo",
+        messages: messages
+      })
+    })
+    .then(response => response.json())
+    .then(data => {
+      const assistantReply = data.choices[0].message.content;
+      messages.push({ "role": "assistant", "content": assistantReply });
+
+      hideTypingIndicator();
+      updateChatLog();
+    })
+    .catch(error => console.error("Error:", error));
+
+    userInput.value = "";
+  }
+
+  updateChatLog();
+</script>
+</body>
+</html>
