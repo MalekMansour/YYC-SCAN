@@ -136,7 +136,6 @@
     <div id="category-bar">
         <button class="category-button" onclick="changePrompt('YYC Scan')">YYC Scan</button>
         <button class="category-button" onclick="changePrompt('Immigration')">Immigration</button>
-        <button class="category-button" onclick="changePrompt('Citizenship')">Citizenship</button>
         <button class="category-button" onclick="changePrompt('Taxes')">Taxes</button>
         <button class="category-button" onclick="changePrompt('Health Care')">Health Care</button>
         <button class="category-button" onclick="changePrompt('Health Card')">Health Card</button>
@@ -150,6 +149,9 @@
         <button class="category-button" onclick="changePrompt('Veterans')">Veterans</button>
         <button class="category-button" onclick="changePrompt('Youth Programs')">Youth Programs</button>
         <button class="category-button" onclick="changePrompt('Volunteering Programs')">Volunteering Programs</button>
+        <button class="category-button" onclick="changePrompt('Garbage Day')">Garbage Day</button>
+        <button class="category-button" onclick="changePrompt('Emergencies')">Emergencies</button>
+
     </div>
   <div id="welcome-message">How can I help you today?</div>
   <div id="chat-log"></div>
@@ -170,18 +172,26 @@
   Your primary function is to provide comprehensive and accurate information exclusively about Calgary. 
   Ensure all responses adhere strictly to this geographic scope. 
   Additionally, actively moderate and filter out any inappropriate or unrelated queries. 
-  Your goal is to be a reliable source of information regarding Calgary's attractions, events, 
-  local culture, notable landmarks, and any other relevant topics specific to the city. 
-  If the user asks about "points" tell them that they can see their points in the home page and they can redeem their prizes in the profile section.
-  YYC Scan is an app that gives points to the user when they go to places in calgary. When they make their purchase, they get their QR Code scanned to redeem points.
-  Every time the user reach a certain amount of points, he lvls up and get 1 free coupon/discount to a new place. 
-  Users get point when they come back to a place they've already been to but gets more when it's their first time.
-  YYC Scan offers information about immigration, citizenship, health care, culture, history, taxes, etc.
-  If the user asks for directions/maps/places, you can tell them to look at the maps feature the YYC Scan offers.
-  If the user speaks to you in any other language, make sure to match their language as they might not understand english very well.
-  If the user asks about when to take out their garbage, tell them to get the calgary garbage app.
-  Provide useful government URLS for the user. Don't mention the YYC Scan website. 
-  Make sure every link starts with https//. Make sure there is no period at the end of URLS.
+  YYC Scan is an application designed to enhance the user's experience in Calgary through gamification. Users earn points by visiting various places in the city, including restaurants, cafes, and participating in different activities. The more places they visit, the more points they accumulate.
+  As users reach specific point milestones, they level up in the app. Each level achievement comes with a reward - a discount voucher for a new place they haven't visited before. This creates an incentive for users to explore and engage with different venues and activities in Calgary.
+  If the user asks about Immigration, Taxes, Health Care, Culture, History, SIN, Programs, etc, Make sure to explain and give a government URL for the user.
+  ALWAYS give a gc.ca URL to the user. Each URL has to be canada.ca or gc.ca .
+  Make sure each link starts with https://  
+  Keep each anwser 2-3 sentences long.
+
+  URLS that exist:
+  Health Card: https://www.alberta.ca/ahcip.aspx
+  Immigration: https://www.canada.ca/en/services/immigration-citizenship.html 
+  Culture: https://www.visitcalgary.com
+  Weather: https://weather.gc.ca/city/pages/ab-52_metric_e.html
+  Jobs: https://www.canada.ca/en/services/jobs.html
+  Veterans: https://www.canada.ca/en/services/veterans-military.html
+  Garbage: https://www.calgary.ca/waste/residential/garbage-schedule.html
+  Taxes: https://www.canada.ca/en/services/taxes.html
+  Indigenous People: https://www.canada.ca/en/services/indigenous-peoples.html
+  Volunteering Programs: https://www.calgary.ca/volunteer/home.html
+  Airport: https://www.yyc.com/ 
+  Emergencies: https://www.canada.ca/en/services/policing.html 
   `;
 
   messages.push({ "role": "system", "content": systemMsg });
@@ -193,10 +203,15 @@
       .join('');
   }
 
+  function removePeriodFromUrl(url) {
+    return url.endsWith('.') ? url.slice(0, -1) : url;
+  }
+
   function makeLinksClickable(content) {
     const urlRegex = /(https?:\/\/[^\s]+)/g;
     return content.replace(urlRegex, (url) => {
-      return `<a href="#" onclick="window.open('${url}', '_blank'); return false;">${url}</a>`;
+      const cleanedUrl = removePeriodFromUrl(url);
+      return `<a href="#" onclick="window.open('${cleanedUrl}', '_blank'); return false;">${cleanedUrl}</a>`;
     });
   }
 
