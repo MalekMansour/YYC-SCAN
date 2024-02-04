@@ -1,5 +1,6 @@
+# IGNORE TESTING FILE
 import openai
-openai.api_key = "API_KEY"
+openai.api_key = "MY_API_KEY"
 
 messages = []
 system_msg = ("You are a Calgary Assistant. Only anwser questions about calgary. Disregard everything else.")

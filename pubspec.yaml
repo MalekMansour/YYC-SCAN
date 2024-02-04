@@ -11,6 +11,7 @@ dependencies:
   persistent_bottom_nav_bar: ^5.0.2
   mobile_scanner: ^4.0.0
   google_maps_flutter: ^2.5.3
+  slide_indexed_stack: ^0.0.1
   flutter:
     sdk: flutter
   camera: ^0.10.5+9
