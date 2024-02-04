@@ -1,8 +1,10 @@
 import 'package:get/get.dart';
-import 'package:yyc_scan/app/global_widgets/navigation/navigation.widget.dart';
 
+import '../global_widgets/navigation/navigation.widget.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
+import '../modules/scan/bindings/scan_binding.dart';
+import '../modules/scan/views/scan_view.dart';
 
 part 'app_routes.dart';
 
@@ -20,6 +22,11 @@ class AppPages {
     GetPage(
       name: _Paths.NAVIGATION,
       page: () => const NavigationWidget(),
+    ),
+    GetPage(
+      name: _Paths.SCAN,
+      page: () => const ScanView(),
+      binding: ScanBinding(),
     ),
   ];
 }
